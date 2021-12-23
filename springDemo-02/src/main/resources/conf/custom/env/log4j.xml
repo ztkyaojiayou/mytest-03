@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+    <!-- ######################################defaultLog配置块开始########################################## -->
+    <!-- 控制台输出 -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %p [%c] - %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+    <!-- kafka输出 -->
+    <appender name="kafkaAppender" class="org.apache.kafka.log4jappender.KafkaLog4jAppender">
+        <param name="topic" value="test-default-log"/>
+        <param name="brokerList" value="10.255.32.11:9092"/>
+        <param name="syncSend" value="false"/>
+        <layout class="net.logstash.log4j.JSONEventLayoutV1">
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="kafkaAppender" />-->
+    </root>
+    <!-- ######################################defaultLog配置块结束########################################## -->
+
+    <!-- ######################################accessLogger配置块开始########################################## -->
+    <appender name="accessLoggerAppender" class="org.apache.kafka.log4jappender.KafkaLog4jAppender">
+        <param name="topic" value="test-access-log"/>
+        <param name="brokerList" value="10.255.32.11:9092"/>
+        <param name="syncSend" value="false"/>
+        <layout class="net.logstash.log4j.JSONEventLayoutV1">
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+    <logger name="accessLogger" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="accessLoggerAppender"/>-->
+    </logger>
+    <!-- ######################################accessLogger配置块结束########################################## -->
+
+    <!-- ######################################actionLogEntityLogger配置块开始########################################## -->
+    <appender name="actionLoggerAppender" class="org.apache.kafka.log4jappender.KafkaLog4jAppender">
+        <param name="topic" value="test-action-log"/>
+        <param name="brokerList" value="10.255.32.11:9092"/>
+        <param name="syncSend" value="false"/>
+        <layout class="net.logstash.log4j.JSONEventLayoutV1">
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+    <logger name="actionLogger" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="actionLoggerAppender"/>-->
+    </logger>
+    <logger name="actionLogEntityLogger" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="actionLoggerAppender"/>-->
+    </logger>
+    <!-- ######################################actionLogEntityLogger配置块结束########################################## -->
+
+    <!-- ######################################dbMapperLogger配置块开始########################################## -->
+    <appender name="dbMapperLoggerAppender" class="org.apache.kafka.log4jappender.KafkaLog4jAppender">
+        <param name="topic" value="test-action-log"/>
+        <param name="brokerList" value="10.255.32.11:9092"/>
+        <param name="syncSend" value="false"/>
+        <layout class="net.logstash.log4j.JSONEventLayoutV1">
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+    <logger name="dbMapperLogger" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="dbMapperLoggerAppender"/>-->
+    </logger>
+    <!-- ######################################dbMapperLogger配置块结束########################################## -->
+
+    <!-- ######################################dbMapperLogger配置块开始########################################## -->
+    <appender name="thirdPartyInvokeLoggerAppender" class="org.apache.kafka.log4jappender.KafkaLog4jAppender">
+        <param name="topic" value="test-action-log"/>
+        <param name="brokerList" value="10.255.32.11:9092"/>
+        <param name="syncSend" value="false"/>
+        <layout class="net.logstash.log4j.JSONEventLayoutV1">
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+    <logger name="thirdPartyInvokeLogger" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="dbMapperLoggerAppender"/>-->
+    </logger>
+    <!-- ######################################dbMapperLogger配置块结束########################################## -->
+
+    <!-- ######################################businessLog配置块开始########################################## -->
+    <!--business log appender -->
+    <appender name="businessAppender" class="org.apache.kafka.log4jappender.KafkaLog4jAppender">
+        <param name="topic" value="test-new-business-log"/>
+        <param name="brokerList" value="10.255.32.11:9092"/>
+        <param name="syncSend" value="false"/>
+        <layout class="net.logstash.log4j.JSONEventLayoutV1">
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="DEBUG"/>
+        </filter>
+    </appender>
+    <logger name="businessLogger" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="businessAppender"/>-->
+    </logger>
+    <!-- ######################################businessLog配置块结束########################################## -->
+
+    <!-- ######################################globalExceptionLogger配置块开始########################################## -->
+    <logger name="globalExceptionLogger" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="kafkaAppender" />-->
+    </logger>
+    <!-- ######################################globalExceptionLogger配置块结束########################################## -->
+
+    <!-- ######################################class配置块开始########################################## -->
+    <logger name="org.apache.kafka" additivity="false">
+        <level value="ERROR" />
+        <appender-ref ref="stdout" />
+    </logger>
+    <logger name="springfox.documentation" additivity="false">
+        <level value="ERROR" />
+        <appender-ref ref="stdout" />
+    </logger>
+    <!-- ######################################org.apache.kafka配置块结束########################################## -->
+
+    <!-- ######################################JMSGLogger配置块开始########################################## -->
+    <logger name="JMSGClientLogger" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="kafkaAppender" />-->
+    </logger>
+    <logger name="JMSGCmqSdk" additivity="false">
+        <level value="ERROR"/>
+        <appender-ref ref="stdout" />
+        <!--<appender-ref ref="kafkaAppender" />-->
+    </logger>
+    <!-- ######################################JMSGLogger配置块结束########################################## -->
+
+</log4j:configuration>

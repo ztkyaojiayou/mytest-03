@@ -1,0 +1,126 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+    <context:property-placeholder
+            location="classpath:conf/custom/env/database.properties"
+            ignore-unresolvable="true"/>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--DynamicDataSource不应有指定的databaseId -->
+        <property name="databaseIdProvider">
+            <null/>
+        </property>
+<!--        <property name="typeAliasesPackage" value="com.rezen.csp.persist.dbo"/>-->
+        <property name="mapperLocations" value="classpath:mybatis/*Mapper.xml"/>
+        <property name="configLocation" value="classpath:conf/core/SqlMapConfig.xml"/>
+        <property name="typeAliasesPackage" value="com.rezen.pmsone.service.persist.dbo.mhk"/>
+        <property name="plugins">
+            <array>
+                <!--分页插件配置-->
+                <bean class="com.rezen.framework.db.mybatis.page.PaginationInterceptor">
+                    <property name="properties">
+                        <value>
+                            lc_pcm=com.rezen.framework.db.mybatis.page.dialect.MySQLDialect
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <!-- 配置mybatis的MapperScannerConfigurer -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--basePackage对应的是接口所在的目录-->
+        <property name="basePackage" value="com.rezen.pmsone.**.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!-- 事务配置 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 因使用连接池，所以只有在存在真实事务时开启Synchronization -->
+        <property name="transactionSynchronization" value="1"/>
+    </bean>
+
+    <!-- 开启事务注解驱动 -->
+    <tx:annotation-driven order="100"/>
+
+    <bean id="dataSource" class="com.rezen.framework.db.mybatis.datasource.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry key="Master" value-ref="master"/>
+                <entry key="ReadOnly" value-ref="readonly"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="master" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${master.url}"/>
+        <property name="username" value="${master.username}"/>
+        <property name="password" value="${master.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="stat-filter"/>
+            </list>
+        </property>
+
+        <property name="maxActive" value="${master.maxActive}"/>  <!-- 最大连接数 -->
+        <property name="initialSize" value="${master.initialSize}"/>  <!-- 初始连接数 -->
+        <property name="minIdle" value="${master.minIdle}"/>  <!-- 最小空闲连接数 -->
+        <property name="maxWait" value="${master.maxWait}"/>   <!-- 获取连接时最大等待时间 -->
+
+        <property name="timeBetweenEvictionRunsMillis" value="30000"/> <!-- 连接检查周期 -->
+        <property name="minEvictableIdleTimeMillis" value="120000"/>  <!-- 达到空闲时间，则关闭连接 -->
+
+        <property name="validationQuery" value="select 1"/> <!-- 保活验证Sql -->
+        <property name="testWhileIdle" value="true"/>  <!-- 空闲连接是否校验 -->
+        <property name="testOnBorrow" value="false"/>  <!-- 使用连接前是否校验 -->
+        <property name="testOnReturn" value="false"/>  <!-- 归还连接时是否校验 -->
+        <property name="maxOpenPreparedStatements" value="-1"/>  <!-- PSCache数量 -->
+        <property name="removeAbandoned" value="false"/> <!-- 打开removeAbandoned功能 -->
+        <property name="removeAbandonedTimeout" value="1800"/> <!-- 建立多长时间就需要被强制关闭 -->
+        <property name="logAbandoned" value="true"/> <!-- 关闭Abandoned连接时输出错误日志 -->
+    </bean>
+    <bean id="readonly" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${readonly.url}"/>
+        <property name="username" value="${readonly.username}"/>
+        <property name="password" value="${readonly.password}"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="stat-filter"/>
+            </list>
+        </property>
+
+        <property name="maxActive" value="${readonly.maxActive}"/>  <!-- 最大连接数 -->
+        <property name="initialSize" value="${readonly.initialSize}"/>  <!-- 初始连接数 -->
+        <property name="minIdle" value="${readonly.minIdle}"/>  <!-- 最小空闲连接数 -->
+        <property name="maxWait" value="${readonly.maxWait}"/>   <!-- 获取连接时最大等待时间 -->
+
+        <property name="timeBetweenEvictionRunsMillis" value="30000"/> <!-- 连接检查周期 -->
+        <property name="minEvictableIdleTimeMillis" value="120000"/>  <!-- 达到空闲时间，则关闭连接 -->
+
+        <property name="validationQuery" value="select 1"/> <!-- 保活验证Sql -->
+        <property name="testWhileIdle" value="true"/>  <!-- 空闲连接是否校验 -->
+        <property name="testOnBorrow" value="false"/>  <!-- 使用连接前是否校验 -->
+        <property name="testOnReturn" value="false"/>  <!-- 归还连接时是否校验 -->
+        <property name="maxOpenPreparedStatements" value="-1"/>  <!-- PSCache数量 -->
+        <property name="removeAbandoned" value="false"/> <!-- 打开removeAbandoned功能 -->
+        <property name="removeAbandonedTimeout" value="1800"/> <!-- 建立多长时间就需要被强制关闭 -->
+        <property name="logAbandoned" value="true"/> <!-- 关闭Abandoned连接时输出错误日志 -->
+    </bean>
+
+    <!-- 慢SQL记录  -->
+    <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
+        <property name="mergeSql" value="true"/>
+        <property name="slowSqlMillis" value="1000"/>
+        <property name="logSlowSql" value="true"/>
+    </bean>
+</beans>
