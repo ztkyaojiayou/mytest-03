@@ -1,5 +1,9 @@
 package 设计模式.代理模式.动态代理.基于子类_Enhancer类;
 
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
 import java.lang.reflect.Method;
 
 /**
@@ -30,7 +34,7 @@ public class ClientTest_Enhancer {
          *          我们一般写的都是该接口的子接口实现类：MethodInterceptor（“方法拦截”）
          */
         //1.创建代理对象（cglibProducer即为创建的代理对象）
-        Producer cglibProducer = (Producer)Enhancer.create(producer.getClass(), new MethodInterceptor() {
+        Producer cglibProducer = (Producer) Enhancer.create(producer.getClass(), new MethodInterceptor() {
             /**
              * 执行被代理对象的任何方法都会经过该方法               （核心）
              * @param proxy
