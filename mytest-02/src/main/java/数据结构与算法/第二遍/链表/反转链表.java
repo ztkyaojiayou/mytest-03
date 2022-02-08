@@ -40,6 +40,7 @@ public class 反转链表 {
             cur_next = head.next;
             //反转--使用head
             head.next = cur_pre;
+            //移动到下一个结点再反转，如此往复
             cur_pre = head;
             head = cur_next;
         }

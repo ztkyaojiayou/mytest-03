@@ -36,8 +36,12 @@ public class 用链表表示的两数相加02 {
             head.next = new ListNode(sum % 10);//这里的(sum % m)表示个位（因为每一个节点存储的数是不含进位的，这一点务必注意），取余即可。
             head = head.next;
           //两链表都往后移一个节点，进行下一位的计算（务必要判断一下节点是否为空，否则会报异常）
-            if(l1 != null) l1 = l1.next;
-            if(l2 != null) l2 = l2.next;
+            if(l1 != null) {
+                l1 = l1.next;
+            }
+            if(l2 != null) {
+                l2 = l2.next;
+            }
         }
         //最后，返回该链表的头结点即可
         return dummy.next;
