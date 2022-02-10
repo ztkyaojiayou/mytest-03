@@ -1,6 +1,5 @@
 package Trip;
 
-
 /**
  * @Author: tk.zou
  * @Description:
@@ -10,7 +9,6 @@ package Trip;
 
 
 import org.jetbrains.annotations.Nullable;
-
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
@@ -52,9 +50,12 @@ public class RsaEncrypt {
         String publicKey = key == null ? defaultKey : key;
 
         //加密后的ssoToken,可以在前台界面进行解密测试
+        //因为这个publicKey是来自前台的\
+        //对用户名加密
         String encrypt = encrypt(username, publicKey);
         System.out.println("encrypted username: " + encrypt);
 
+        //再用
         //encode后的token,可以直接放于url上进行单点
         String encode = URLEncoder.encode(encrypt, "UTF-8");
         System.out.println("ssoToken: " + encode);
