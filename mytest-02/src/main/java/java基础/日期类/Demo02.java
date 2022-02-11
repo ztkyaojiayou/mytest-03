@@ -29,6 +29,7 @@ public class Demo02 {
         int day = date.getDay();
         System.out.println(year);
         int hours = date.getHours();
+        System.out.println(dates);
         int min = date.getMinutes();
         int second = date.getSeconds();
 
