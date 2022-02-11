@@ -1,8 +1,10 @@
 package java基础.日期类;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -69,6 +71,13 @@ public class Demo02 {
 
         /**
          * （3）LocalDate 提供了三种创建实例的方法：
+         * 3.1）介绍
+         * Java 8新增了LocalDate和LocalTime接口，为什么要搞一套全新的处理日期和时间的API？因为旧的java.util.Date实在是太难用了。
+         * java.util.Date月份从0开始，一月是0，十二月是11，变态吧！java.time.LocalDate月份和星期都改成了enum，就不可能再用错了。
+         * java.util.Date和SimpleDateFormatter都不是线程安全的，而LocalDate和LocalTime和最基本的String一样，是不变类型，不但线程安全，而且不能修改。
+         * 3.2）小结
+         * 在新的Java 8中，日期和时间被明确划分为LocalDate和LocalTime，LocalDate无法包含时间，LocalTime无法包含日期。当然，LocalDateTime才能同时包含日期和时间。
+         * 新接口更好用的原因是考虑到了日期时间的操作，经常发生往前推或往后推几天的情况。用java.util.Date配合Calendar要写好多代码，而且一般的开发人员还不一定能写对。
          */
         //获取当前时间的LocalDate
         LocalDate localDate = LocalDate.now();
@@ -76,6 +85,17 @@ public class Demo02 {
         LocalDate ofDate = LocalDate.of(2016, 12, 31);
         //通过解析字符串获取 LocalDate，如果格式不对会抛出 DateTimeParseException
         LocalDate parseDate = LocalDate.parse("2016-12-31-");
+
+        // 取本月第1天：
+        LocalDate firstDayOfThisMonth = localDate.with(TemporalAdjusters.firstDayOfMonth()); // 2014-12-01
+        // 取本月第2天：
+        LocalDate secondDayOfThisMonth = localDate.withDayOfMonth(2); // 2014-12-02
+        // 取本月最后一天，再也不用计算是28，29，30还是31：
+        LocalDate lastDayOfThisMonth = localDate.with(TemporalAdjusters.lastDayOfMonth()); // 2014-12-31
+        // 取下一天：
+        LocalDate firstDayOf2015 = lastDayOfThisMonth.plusDays(1); // 变成了2015-01-01
+        // 取2015年1月第一个周一，这个计算用Calendar要死掉很多脑细胞：
+        LocalDate firstMondayOf2015 = LocalDate.parse("2015-01-01").with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)); // 2015-01-05
     }
 
 }
