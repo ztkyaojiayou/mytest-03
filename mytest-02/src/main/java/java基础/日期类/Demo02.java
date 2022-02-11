@@ -44,6 +44,18 @@ public class Demo02 {
 
         /**
          * （2）Calendar 的常用方法
+         * 　2.1）介绍
+         * 介绍一下Date 与 Calendar 的区别
+         * Date用于记录某一个含日期的、精确到毫秒的时间。重点在代表一刹那的时间本身。
+         * Calendar用于将某一日期放到历法中的互动——时间和年、月、日、星期、上午、下午、夏令时等这些历法规定互相作用关系和互动。
+         * Calendar本身代表公历的一个简化缩水版，姑且叫“计算机历”。
+         * 完整的公历是格里高利历,Java SE中以GregorianCalendar类来提供相关的历法功能。　　　
+         *  2.2）小结
+         * Calendar 提供的获取实例的方法主要有两种途径：
+         * 1、调用Calendar.getInstance（）方法
+         * 2、创建内部类Builder 的实例，通过调用其 build（）方法创建 Calendar 实例
+         * 3.对于第一种方法，只能先获取当前时间的Calendar，然后再通过调用相应的set 方法设置年月日等，
+         * 而如果使用内部类Builder 方法，可以通过setInstant 方法设置我们所期望的时间。
          */
 
 //我们最常用的方法有：
@@ -57,6 +69,19 @@ public class Demo02 {
         int hour111 = calendar.get(Calendar.HOUR_OF_DAY);
         int minute111 = calendar.get(Calendar.MINUTE);
         int seconds111 = calendar.get(Calendar.SECOND);
+
+
+        /**
+         * 使用add方法对Calendar表示的时间进行计算
+         * @author wangxin
+         */
+        //加3年
+        calendar.add(Calendar.YEAR, 3);
+        //加2月
+        calendar.add(Calendar.MONTH, 2);
+        //减30天,对天的加减只用DAY_OF_YEAR
+        calendar.add(Calendar.DAY_OF_YEAR, -30);
+        System.out.println(calendar.getTime());
 
         /**
          *LocalDateTime与String日期互相转换
