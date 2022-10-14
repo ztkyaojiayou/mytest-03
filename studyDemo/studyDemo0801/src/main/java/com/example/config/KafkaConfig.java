@@ -26,7 +26,13 @@ public class KafkaConfig {
   public KafkaProducer<String, String> getKafkaProducer() {
     Properties properties = new Properties();
     properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "loal102:9092");
-    properties.put(ProducerConfig.ACKS_CONFIG, "ack");
+    properties.put(ProducerConfig.ACKS_CONFIG, "-1");
+    properties.put(
+        ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+        "org.apache.kafka.common.serialization.Serializer");
+    properties.put(
+        ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+        "org.apache.kafka.common.serialization.Serializer");
     // 定义为自定义的分区逻辑
     properties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, "MyPartitioner.class");
 
@@ -57,7 +63,8 @@ public class KafkaConfig {
     properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, "1000");
     //
     //    // 若关闭自动提交，则需要手动提交！
-    // 也会出现消息重复消费（即当异步提交时突然挂掉时）和消息未被成功处理但被跳过了（也是当消息执行失败，但是offset却已经更新了时）的问题
+    // 也会出现消息重复消费（即当异步提交时突然挂掉时）和消息未被成功处理但被跳过了
+    // （也是当消息执行失败，但是offset却已经更新了时）的问题
     // 因此易知，重复消费无可避免，消息未被成功处理但被跳过了也无可避免
     // 对于重复消费的问题，我们可以使用幂等性来确保不影响业务；
     // 对于消息未被成功处理但被跳过了的问题，

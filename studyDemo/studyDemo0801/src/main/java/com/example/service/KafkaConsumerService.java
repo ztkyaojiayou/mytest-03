@@ -16,8 +16,7 @@ import java.util.concurrent.ExecutionException;
  * @modyified By:
  */
 public class KafkaConsumerService {
-  @Autowired
-  KafkaConsumer<String,String> kafkaConsumer;
+  @Autowired KafkaConsumer<String, String> kafkaConsumer;
 
   public void consumeKafkaMsg() throws ExecutionException, InterruptedException {
     // 先指定要订阅哪个主题--是一个集合，即可以订阅多个主题
@@ -34,7 +33,6 @@ public class KafkaConsumerService {
           @Override
           public void onPartitionsRevoked(Collection<TopicPartition> partitions) {
             // 获取某分区的最新offset--从muysql取
-
           }
 
           // 该方法会在Rebalance之后调用
@@ -44,7 +42,7 @@ public class KafkaConsumerService {
           }
         });
 
-    // 消费/获取消息--返回的是一个集合，因为是批量获取的，效率更高
+    // 消费/获取消息--返回的是一个集合/ConsumerRecords对象，因为是批量获取的，效率更高
     ConsumerRecords<String, String> consumerRecords = kafkaConsumer.poll(100);
     // 因此需要遍历处理
     for (ConsumerRecord<String, String> consumerRecord : consumerRecords) {

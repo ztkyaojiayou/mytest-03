@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- nameSpace：用于绑定一个对应的Dao/Mapper接口，即相当于这个接口中的方法对应的sql语句放在该文件中，
+且mybatis就会自动找到并执行,也即dao接口的实现类-->
+<mapper namespace="com.tkzou.dao.UserDao">
+
+    <select id="getUserList" resultType="com.tkzou.pojo.User">
+        select * from mybatis.user;
+    </select>
+</mapper>

@@ -5,6 +5,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.clients.producer.internals.FutureRecordMetadata;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
@@ -18,16 +19,17 @@ import java.util.concurrent.Future;
  */
 @Service
 public class KafkaProducerService {
-  @Autowired KafkaProducer<String,String> kafkaProducer;
+  @Autowired KafkaProducer<String, String> kafkaProducer;
+  @Autowired KafkaTemplate kafkaTemplate;
 
   public void sendKafkaMsg() throws ExecutionException, InterruptedException {
     // 发消息--send
     for (int i = 0; i < 10; i++) {
       // 轮询分区
-      kafkaProducer.send(new ProducerRecord<String,String>("tkzou", "tstMsg--" + i));
+      kafkaProducer.send(new ProducerRecord<String, String>("tkzou", "tstMsg--" + i));
       // 带回调
       kafkaProducer.send(
-          new ProducerRecord<String,String>("tkzou", "testMsg--2" + i),
+          new ProducerRecord<String, String>("tkzou", "testMsg--2" + i),
           // 回调接口信息，metadata为基本信息，当失败时会报异常exception，成功时则无异常
           (metadata, exception) -> {
             if (exception == null) { // 即表示消息发送成功
@@ -36,7 +38,7 @@ public class KafkaProducerService {
             }
           });
       // 指定分区
-      kafkaProducer.send(new ProducerRecord<String,String>("tkzou", "0", "tstMsg--" + i));
+      kafkaProducer.send(new ProducerRecord<String, String>("tkzou", "0", "tstMsg--" + i));
 
       // 那如何同步发送呢--使用send的返回值来实现，因为返回值是一个Future，因此可以调用它的get方法来实现
       // 调用get方法时，会：
@@ -50,7 +52,8 @@ public class KafkaProducerService {
       //            return nextRecordMetadata.get();
       //        return valueOrError();
       //    }
-      Future<RecordMetadata> res = kafkaProducer.send(new ProducerRecord<>("tkzou", "tstMsg--" + i));
+      Future<RecordMetadata> res =
+          kafkaProducer.send(new ProducerRecord<>("tkzou", "tstMsg--" + i));
       res.get();
       // 即相当于是调用的FutureRecordMetadata中的get方法！
       FutureRecordMetadata res1 = (FutureRecordMetadata) res;

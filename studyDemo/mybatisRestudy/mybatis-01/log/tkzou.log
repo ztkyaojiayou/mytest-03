@@ -1,0 +1,75 @@
+[INFO][22-08-11][com.tkzou.dao.UserDaoTest]info：进入selectUser方法
+[DEBUG][22-08-11][com.tkzou.dao.UserDaoTest]debug：进入selectUser方法
+[ERROR][22-08-11][com.tkzou.dao.UserDaoTest]error: 进入selectUser方法
+[DEBUG][22-08-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][22-08-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 2007331442.
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@77a57272]
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]==>  Preparing: select * from mybatis.user; 
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]==> Parameters: 
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]<==      Total: 3
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@77a57272]
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@77a57272]
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 2007331442 to pool.
+[INFO][22-08-11][com.tkzou.dao.UserDaoTest]info：进入selectUser方法
+[DEBUG][22-08-11][com.tkzou.dao.UserDaoTest]debug：进入selectUser方法
+[ERROR][22-08-11][com.tkzou.dao.UserDaoTest]error: 进入selectUser方法
+[DEBUG][22-08-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][22-08-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 2017797638.
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@78452606]
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]==>  Preparing: select * from mybatis.user; 
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]==> Parameters: 
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]<==      Total: 3
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@78452606]
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@78452606]
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 2017797638 to pool.
+[INFO][22-08-11][com.tkzou.dao.UserDaoTest]info：进入selectUser方法
+[DEBUG][22-08-11][com.tkzou.dao.UserDaoTest]debug：进入selectUser方法
+[ERROR][22-08-11][com.tkzou.dao.UserDaoTest]error: 进入selectUser方法
+[DEBUG][22-08-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][22-08-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 2017797638.
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@78452606]
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]==>  Preparing: select * from mybatis.user; 
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]==> Parameters: 
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]<==      Total: 3
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@78452606]
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@78452606]
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 2017797638 to pool.
+[INFO][22-08-11][com.tkzou.dao.UserDaoTest]info：进入selectUser方法
+[DEBUG][22-08-11][com.tkzou.dao.UserDaoTest]debug：进入selectUser方法
+[ERROR][22-08-11][com.tkzou.dao.UserDaoTest]error: 进入selectUser方法
+[DEBUG][22-08-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][22-08-11][org.apache.ibatis.logging.LogFactory]Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]PooledDataSource forcefully closed/removed all connections.
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Opening JDBC Connection
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]Created connection 366252104.
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Setting autocommit to false on JDBC Connection [com.mysql.jdbc.JDBC4Connection@15d49048]
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]==>  Preparing: select * from mybatis.user; 
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]==> Parameters: 
+[DEBUG][22-08-11][com.tkzou.dao.UserDao.getUserList]<==      Total: 3
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Resetting autocommit to true on JDBC Connection [com.mysql.jdbc.JDBC4Connection@15d49048]
+[DEBUG][22-08-11][org.apache.ibatis.transaction.jdbc.JdbcTransaction]Closing JDBC Connection [com.mysql.jdbc.JDBC4Connection@15d49048]
+[DEBUG][22-08-11][org.apache.ibatis.datasource.pooled.PooledDataSource]Returned connection 366252104 to pool.
+[INFO][22-08-11][com.tkzou.dao.UserDaoTest]info：进入selectUser方法
+[DEBUG][22-08-11][com.tkzou.dao.UserDaoTest]debug：进入selectUser方法
+[ERROR][22-08-11][com.tkzou.dao.UserDaoTest]error: 进入selectUser方法
