@@ -40,11 +40,13 @@ public class DeptService {
      */
     public void deleteCascadeByID(Integer deptId) {
 
+        //删除子部门
         List<Integer> childIDList = deptMapper.selectChildrenIDByPrimaryKey(deptId);
         for (Integer childId : childIDList) {
             deleteCascadeByID(childId);
         }
 
+        //删除当前部门
         deleteByPrimaryKey(deptId);
     }
 

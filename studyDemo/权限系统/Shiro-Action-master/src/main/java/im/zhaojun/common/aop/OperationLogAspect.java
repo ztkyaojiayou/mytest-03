@@ -34,6 +34,12 @@ public class OperationLogAspect {
     public void pointcut() {
     }
 
+    /**
+     * 环绕通知
+     * @param point
+     * @return
+     * @throws Throwable
+     */
     @Around(value = "pointcut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         Object result;

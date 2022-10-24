@@ -28,6 +28,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+/**
+ * 全局异常处理
+ */
 @ControllerAdvice
 public class WebExceptionHandler {
 

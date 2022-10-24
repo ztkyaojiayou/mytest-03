@@ -1,0 +1,6 @@
+2022-10-18 05:27:22.316  INFO 12080 --- [SessionValidationThread-1] a.s.s.m.AbstractValidatingSessionManager : Validating all active sessions...
+2022-10-18 05:27:22.326  INFO 12080 --- [SessionValidationThread-1] a.s.s.m.AbstractValidatingSessionManager : Finished session validation.  No sessions were stopped.
+2022-10-18 08:57:03.070  INFO 12080 --- [Thread-23] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4d9e68d0: startup date [Fri Oct 14 14:09:29 CST 2022]; root of context hierarchy
+2022-10-18 08:57:03.095  INFO 12080 --- [Thread-23] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2022-10-18 08:57:03.098  INFO 12080 --- [Thread-23] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans
+2022-10-18 08:57:03.109  INFO 12080 --- [Thread-23] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

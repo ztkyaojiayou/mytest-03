@@ -1,9 +1,15 @@
 package com.example.test;
 
+import java.util.Collections;
 import java.util.concurrent.TimeUnit;
+
+import cn.hutool.core.collection.CollectionUtil;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author :zoutongkun
  * @date :2022/10/13 9:18 下午
@@ -15,6 +21,7 @@ public class LocalCacheTest {
   public static void main(String[] args) throws Exception {
     CacheService us = new CacheService();
     for (int i = 0; i < 6; i++) {
+      StringUtils.join(i,",");
       System.out.println(us.getName("1001"));
       TimeUnit.SECONDS.sleep(1);
     }
