@@ -1,0 +1,31 @@
+server:
+  port: 7010
+
+spring:
+  application:
+    name: service-prometheus
+
+# prometheus
+management:
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    export:
+      prometheus:
+        enabled: true
+        pushgateway: # pushgateway属性配置可以参考 https://github.com/prometheus/pushgateway
+          enabled: true
+          base-url: http://192.168.41.101:9091/
+          job: ${spring.application.name}
+          grouping-key:
+            instance: 192.188.1.245
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  health:
+    db:
+      enabled: false

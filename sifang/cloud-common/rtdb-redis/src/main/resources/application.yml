@@ -1,0 +1,24 @@
+# REDIS (RedisProperties)
+# Redis数据库索引（默认为0）
+spring:
+  redis:
+    client-name: service-jedis
+    cluster:
+      nodes:
+        - 192.188.1.244:6379
+        - 192.188.1.245:6379
+        - 192.188.1.246:6379
+      connectionTimeout: 3000 #连接超时时间
+      soTimeout: 1000 #数据超时时间
+      max-redirects: 3 #最大重连次数
+      max-Attempt: 3 #最大尝试次数
+    database: 0 #默认链接数据库
+    host: 192.188.1.245  # Redis服务器地址
+    port: 6379  # Redis服务器连接端口
+    password: "sf@123456"  # Redis服务器连接密码（默认为空）
+    pool:
+      max-active: 8  # 连接池最大连接数（使用负值表示没有限制）
+      max-wait: -1  # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-idle: 8  # 连接池中的最大空闲连接
+      min-idle: 0  # 连接池中的最小空闲连接
+    timeout: 3000  # 连接超时时间（毫秒）

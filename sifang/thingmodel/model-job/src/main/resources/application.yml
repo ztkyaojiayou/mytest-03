@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: model-dp
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://192.188.1.245:5432/newdb?currentSchema=model
+    schemaName: model
+    username: smartsys
+    password: smartsys
+    driver-class-name: org.postgresql.Driver
+  influxdb:
+    url: http://192.188.1.245:8086/
+    user: admin
+    password: sf@123456
+    database: sf-bucket
+    token: "ItXo5mJLdi45dBEaJapeLi7eK5W1rDZK3VKdKrqHJlyTS5rBWPlP9lY2KrrVCpm1oC9NXX-SJBHLLAiSLuDhzw=="
+  redis:
+    cluster:
+      nodes:
+        - 192.188.1.244:6379
+        - 192.188.1.245:6379
+        - 192.188.1.246:6379
+      connectionTimeout: 3000 #连接超时时间
+      soTimeout: 1000 #数据超时时间
+      max-redirects: 3 #最大重连次数
+      max-Attempt: 3 #最大尝试次数
+    database: 0 #默认链接数据库
+    host: 192.188.1.245  # Redis服务器地址
+    port: 6379  # Redis服务器连接端口
+    password: "sf@123456"  # Redis服务器连接密码（默认为空）
+    pool:
+      max-active: 8  # 连接池最大连接数（使用负值表示没有限制）
+      max-wait: -1  # 连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-idle: 8  # 连接池中的最大空闲连接
+      min-idle: 0  # 连接池中的最小空闲连接
+    timeout: 3000  # 连接超时时间（毫秒）
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.sfauto.cloud.model
+  global-config:
+    db-config:
+      id-type: auto
+      select-strategy: not_empty
+  configuration:
+    use-generated-keys: true
+
+xxl:
+  job:
+    admin:
+      ### 调度中心部署跟地址 [选填]：如调度中心集群部署存在多个地址则用逗号分隔。执行器将会使用该地址进行"执行器心跳注册"和"任务结果回调"；为空则关闭自动注册；
+      addresses: http://192.188.1.245:8090/xxl-job-admin
+      ### 执行器通讯TOKEN [选填]：非空时启用
+    accessToken: default_token
+    executor:
+      ### 执行器AppName [选填]：执行器心跳注册分组依据；为空则关闭自动注册
+      appname: tm-xxl-job-executor
+      ### 执行器注册 [选填]：优先使用该配置作为注册地址，为空时使用内嵌服务 ”IP:PORT“ 作为注册地址。从而更灵活的支持容器类型执行器动态IP和动态映射端口问题。
+      address:
+      ### 执行器IP [选填]：默认为空表示自动获取IP，多网卡时可手动设置指定IP，该IP不会绑定Host仅作为通讯实用；地址信息用于 "执行器注册" 和 "调度中心请求并触发任务"；
+      ip:
+      ### 执行器端口号 [选填]：小于等于0则自动获取；默认端口为9999，单机部署多个执行器时，注意要配置不同执行器端口；
+      port: 9998
+      ### 执行器运行日志文件存储磁盘路径 [选填] ：需要对该路径拥有读写权限；为空则使用默认路径；
+      logpath: ./jobhandler
+      ### 执行器日志文件保存天数 [选填] ： 过期日志自动清理, 限制值大于等于3时生效; 否则, 如-1, 关闭自动清理功能
+      logretentiondays: 30

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: gw-cyber
+
+
+mqtt:
+  host: tcp://192.188.1.244:1883
+  username: admin
+  password: public
+  timeout: 30 #连接超时
+  keepalive: 60  #心跳检查时间
+  clientid: gw-cyber
+  topic: cyber/#
+  plattopic: plat

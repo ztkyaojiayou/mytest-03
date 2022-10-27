@@ -1,0 +1,59 @@
+globalConfig:
+  author: sifang
+  open: false
+  idType: INPUT
+  dateType: ONLY_DATE
+  enableCache: false
+  activeRecord: false
+  baseResultMap: true
+  baseColumnList: true
+  swagger2: false
+  fileOverride: true
+dataSourceConfig:
+  url: jdbc:postgresql://192.188.1.245:5432/newdb
+  schemaName: model
+  driverName: org.postgresql.Driver
+  username: smartsys
+  password: smartsys
+packageConfig:
+  parent: com.sfauto.cloud
+  moduleName: model
+  entity: entity
+  service: service
+  serviceImpl: service.impl
+  mapper: mapper
+  xml: mapper
+  controller: controller
+  pathInfo:
+    entity_path: src\main\java\com\sfauto\cloud\model\entity
+    service_path: src\main\java\com\sfauto\cloud\model\service
+    service_impl_path: src\main\java\com\sfauto\cloud\model\service\impl
+    mapper_path: src\main\java\com\sfauto\cloud\model\mapper
+    xml_path: src\main\resources\mapper
+    controller_path: src\main\java\com\sfauto\cloud\model\controller
+strategyConfig:
+  naming: underline_to_camel
+  columnNaming: underline_to_camel
+  entityLombokModel: true
+  superMapperClass: com.baomidou.mybatisplus.core.mapper.BaseMapper
+  superServiceClass: com.baomidou.mybatisplus.extension.service.IService
+  superServiceImplClass: com.baomidou.mybatisplus.extension.service.impl.ServiceImpl
+  controllerMappingHyphenStyle: true
+  restControllerStyle: true
+  tablePrefix:
+  include:
+    - model_template
+    - model_property_tmpl
+    - model_service_tmpl
+    - model_event_tmpl
+    - model_device
+    - model_property
+    - model_service
+    - model_event
+    - model_device_type
+    - model_property_type
+    - model_integrate_sys
+    - model_point
+    - model_property_point
+    - model_device_relation
+    - model_tree_view

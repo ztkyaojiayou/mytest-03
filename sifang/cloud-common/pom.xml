@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.sfauto</groupId>
+        <artifactId>cloud-base</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    
+    <artifactId>cloud-common</artifactId>
+    <groupId>com.sfauto.common</groupId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>algorithm-lib</module>
+        <module>base-global</module>
+        <module>rtdb-base</module>
+        <module>rtdb-redis</module>
+        <module>tsdb-base</module>
+        <module>tsdb-influxdb</module>
+        <module>tsdb-iotdb</module>
+        <module>tsdb-pro</module>
+    </modules>
+
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+
+    </build>
+</project>

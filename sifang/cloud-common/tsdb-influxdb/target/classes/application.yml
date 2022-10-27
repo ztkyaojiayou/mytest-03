@@ -1,0 +1,11 @@
+server:
+  port: 7071
+spring:
+  application:
+    name: service-influxdb
+  #influxdb 2.x
+  influxdb:
+    url: http://192.188.1.245:8086/
+    org: sifang
+    bucket: sf-bucket
+    token: "ItXo5mJLdi45dBEaJapeLi7eK5W1rDZK3VKdKrqHJlyTS5rBWPlP9lY2KrrVCpm1oC9NXX-SJBHLLAiSLuDhzw=="

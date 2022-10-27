@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sfauto.cloud.model.mapper.ModelPointMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.sfauto.cloud.model.entity.ModelPoint">
+        <id column="pid" property="pid" />
+        <result column="sid" property="sid" />
+        <result column="name" property="name" />
+        <result column="aliasname" property="aliasname" />
+        <result column="ptype" property="ptype" />
+        <result column="rtuid" property="rtuid" />
+        <result column="pathname" property="pathname" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        pid, sid, name, aliasname, ptype, rtuid, pathname
+    </sql>
+
+</mapper>
